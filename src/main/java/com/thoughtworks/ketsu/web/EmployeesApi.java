@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.thoughtworks.ketsu.web.validators.Validators.*;
+
 /**
  * Created by pzzheng on 5/22/17.
  */
@@ -25,6 +27,14 @@ public class EmployeesApi {
     public Response add(Map<String, Object> employeeInfo,
                         @Context EmployeeRepo employeeRepo,
                         @Context Routes routes) {
+
+        validate(employeeInfo, all(
+                fieldNotEmpty("name"),
+                fieldNotEmpty("department_id"),
+                fieldNotEmpty("role_id"),
+                fieldNotEmpty("gender"),
+                fieldIsEnum(Gender.class, "gender")
+        ));
 
         Employee save = employeeRepo.save(new Employee(employeeInfo.get("name").toString(),
                 Long.valueOf(employeeInfo.get("department_id").toString()),

@@ -7,6 +7,6 @@ import java.util.UUID;
  */
 public class IdGenerator {
     public static long next() {
-        return UUID.randomUUID().getMostSignificantBits();
+        return Math.abs(UUID.randomUUID().getMostSignificantBits());
     }
 }

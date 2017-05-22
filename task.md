@@ -3,9 +3,9 @@
 * post
 	* return 201 when create
 	* try to save to db and can get that one from db;
-	* contains url in location; --20
+	* contains url in location; --20 :30
 
-	* return 400 when field empty; --15
+	* return 400 when field empty; --15 :
 * get
 	* return 200 when get all
 	* try to get from db and can get all details -- 20
