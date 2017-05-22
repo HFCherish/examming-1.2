@@ -53,4 +53,11 @@ public class EmployeeApiTest extends ApiSupport {
         assertThat(res.get("gender"), is(employee.getGender().toString()));
         assertThat(res.get("employee_url").toString().contains(getEmployeesUrl(employee.getId())), is(true));
     }
+
+    @Test
+    public void should_404_when_get_one_employee_if_not_exists() {
+        Response response = get(getEmployeesUrl(1));
+
+        assertThat(response.getStatus(), is(404));
+    }
 }
