@@ -8,7 +8,7 @@
 
     <select id="findById" resultMap="records.employee">
         SELECT
-          <include refid="columns.employee"/>
+        <include refid="columns.employee"/>
         FROM employees E
         WHERE E.id = #{id}
     </select>
@@ -17,6 +17,15 @@
         SELECT
         <include refid="columns.employee"/>
         FROM employees E
+    </select>
+
+    <select id="update" resultMap="records.employee">
+        UPDATE employees SET
+        name = #{employee.name},
+        department_id = #{employee.departmentId},
+        role_id = #{employee.roleId},
+        gender = #{employee.gender}
+        WHERE id = #{id}
     </select>
 
 </mapper>

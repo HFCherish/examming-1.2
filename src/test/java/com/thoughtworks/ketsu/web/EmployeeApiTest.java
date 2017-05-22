@@ -67,8 +67,8 @@ public class EmployeeApiTest extends ApiSupport {
         Map<String, Object> updateInfo = employeeJsonForTest();
         updateInfo.replace("department_id", 2);
 
-//        Response response = put(getEmployeesUrl(employee.getId()), updateInfo);
+        Response response = put(getEmployeesUrl(employee.getId()), updateInfo);
 
-//        assertThat(response.getStatus(), is(204));
+        assertThat(response.getStatus(), is(204));
     }
 }

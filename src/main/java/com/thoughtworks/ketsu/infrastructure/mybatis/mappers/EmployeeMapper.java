@@ -15,4 +15,6 @@ public interface EmployeeMapper {
     void save(@Param("employee") Employee employee);
 
     List<Employee> findAll();
+
+    void update(@Param("id") long employeeId, @Param("employee") Employee employee);
 }

@@ -1,7 +1,6 @@
 package com.thoughtworks.ketsu.domain.employees;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -14,5 +13,5 @@ public interface EmployeeRepo {
 
     List<Employee> findAll();
 
-    void update(long employeeId, Map<String, Object> employeeInfo);
+    void update(long employeeId, Employee employee);
 }
