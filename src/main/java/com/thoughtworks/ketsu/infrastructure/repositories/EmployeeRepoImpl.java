@@ -35,4 +35,9 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     public void update(long employeeId, Employee employee) {
         employeeMapper.update(employeeId, employee);
     }
+
+    @Override
+    public void delete(long id) {
+        employeeMapper.delete(id);
+    }
 }

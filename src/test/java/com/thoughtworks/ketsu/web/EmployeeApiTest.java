@@ -71,4 +71,12 @@ public class EmployeeApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(204));
     }
+
+    @Test
+    public void should_204_when_delete_one_employee() {
+
+        Response response = delete(getEmployeesUrl(employee.getId()));
+
+        assertThat(response.getStatus(), is(204));
+    }
 }

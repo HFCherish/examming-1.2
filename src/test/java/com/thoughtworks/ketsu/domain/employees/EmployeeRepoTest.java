@@ -42,6 +42,12 @@ public class EmployeeRepoTest {
         // prevent using cache when get
         employeeRepo.save(employeeWithDefaultInfo());
         assertThat(employeeRepo.findById(save.getId()).get().getDepartmentId(), is(2l));
+
+//        delete
+        employeeRepo.delete(save.getId());
+        // prevent using cache when get
+        employeeRepo.save(employeeWithDefaultInfo());
+        assertThat(employeeRepo.findById(save.getId()).isPresent(), is((false)));
     }
 
 }

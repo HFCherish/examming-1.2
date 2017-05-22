@@ -17,4 +17,6 @@ public interface EmployeeMapper {
     List<Employee> findAll();
 
     void update(@Param("id") long employeeId, @Param("employee") Employee employee);
+
+    void delete(@Param("id") long id);
 }

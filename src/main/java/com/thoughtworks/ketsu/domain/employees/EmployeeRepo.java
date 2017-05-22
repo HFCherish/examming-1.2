@@ -14,4 +14,6 @@ public interface EmployeeRepo {
     List<Employee> findAll();
 
     void update(long employeeId, Employee employee);
+
+    void delete(long id);
 }

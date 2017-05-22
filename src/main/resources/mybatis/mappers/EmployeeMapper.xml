@@ -19,12 +19,17 @@
         FROM employees E
     </select>
 
-    <select id="update" resultMap="records.employee">
+    <select id="update">
         UPDATE employees SET
         name = #{employee.name},
         department_id = #{employee.departmentId},
         role_id = #{employee.roleId},
         gender = #{employee.gender}
+        WHERE id = #{id}
+    </select>
+
+    <select id="delete">
+        DELETE FROM employees
         WHERE id = #{id}
     </select>
 

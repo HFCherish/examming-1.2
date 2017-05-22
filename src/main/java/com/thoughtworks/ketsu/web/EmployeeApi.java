@@ -3,10 +3,7 @@ package com.thoughtworks.ketsu.web;
 import com.thoughtworks.ketsu.domain.employees.Employee;
 import com.thoughtworks.ketsu.domain.employees.EmployeeRepo;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,8 +36,9 @@ public class EmployeeApi {
         return Response.noContent().build();
     }
 
-    @PUT
-    public Response delete() {
-        return null;
+    @DELETE
+    public Response delete(@Context EmployeeRepo employeeRepo) {
+        employeeRepo.delete(employee.getId());
+        return Response.noContent().build();
     }
 }

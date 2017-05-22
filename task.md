@@ -19,9 +19,9 @@
 * update
  	* return 204 when update --15
 
-	* return 400 when field empty --5 : 22
+	* return 400 when field empty --5 : 30
 * delete
- 	* return 204 when update --10
+ 	* return 204 when update --10 :
 
 # /attendances
 * post
