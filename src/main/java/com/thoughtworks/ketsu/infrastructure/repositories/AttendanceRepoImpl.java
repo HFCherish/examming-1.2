@@ -39,8 +39,8 @@ public class AttendanceRepoImpl implements AttendanceRepo {
     }
 
     @Override
-    public List<Attendance> findAll() {
-        return attendanceMapper.findAll();
+    public List<Attendance> findAll(long employeeId) {
+        return attendanceMapper.findAll(employeeId);
     }
 
     @Override

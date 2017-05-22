@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.attendances.Attendance;
 import com.thoughtworks.ketsu.domain.attendances.AttendanceRepo;
 import com.thoughtworks.ketsu.domain.employees.Employee;
 import com.thoughtworks.ketsu.domain.employees.EmployeeRepo;
@@ -11,11 +12,12 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Map;
 
-import static com.thoughtworks.ketsu.support.TestHelper.attendanceJsonForTest;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareEmployeeWithDefaultInfo;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -69,17 +71,17 @@ public class AttendancesApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(400));
     }
-//
-//    @Test
-//    public void should_200_when_get_all_attendances() {
-//        Employee attendance = prepareEmployeeWithDefaultInfo(attendanceRepo);
-//
-//        Response response = get(getAttendancesUrl());
-//
-//        assertThat(response.getStatus(), is(200));
-//        List<Map> res = response.readEntity(List.class);
-//        assertThat(res, is(notNullValue()));
-//        assertThat(res.size(), is(1));
-//        assertThat(res.get(0).get("id"), is(attendance.getId()));
-//    }
+
+    @Test
+    public void should_200_when_get_all_attendances() {
+        Attendance attendance = prepareAttendanceWithDefaultInfo(attendanceRepo, employee.getId());
+
+        Response response = get(getAttendancesUrl());
+
+        assertThat(response.getStatus(), is(200));
+        List<Map> res = response.readEntity(List.class);
+        assertThat(res, is(notNullValue()));
+        assertThat(res.size(), is(1));
+        assertThat(res.get(0).get("id"), is(attendance.getId()));
+    }
 }

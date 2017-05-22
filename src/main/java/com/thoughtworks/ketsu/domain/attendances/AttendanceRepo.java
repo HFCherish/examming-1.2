@@ -11,7 +11,7 @@ public interface AttendanceRepo {
 
     Optional<Attendance> findById(long id);
 
-    List<Attendance> findAll();
+    List<Attendance> findAll(long employeeId);
 
     void update(long attendanceId, Attendance attendance);
 

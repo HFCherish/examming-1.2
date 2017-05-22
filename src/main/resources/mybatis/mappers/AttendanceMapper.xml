@@ -13,11 +13,14 @@
         WHERE A.id = #{id}
     </select>
 
-    <!--<select id="findAll" resultMap="records.attendance">-->
-        <!--SELECT-->
-        <!--<include refid="columns.attendance"/>-->
-        <!--FROM attendances E-->
-    <!--</select>-->
+    <select id="findAll" resultMap="records.attendance">
+        SELECT
+        <include refid="columns.attendance"/>
+        FROM attendances A
+        <if test="employeeId != -1">
+            WHERE A.employee_id = #{employeeId}
+        </if>
+    </select>
 
     <!--<select id="update">-->
         <!--UPDATE attendances SET-->

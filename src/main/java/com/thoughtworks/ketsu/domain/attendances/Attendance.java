@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.util.IdGenerator;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -55,11 +56,18 @@ public class Attendance implements Record {
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
-        return null;
+        return new HashMap(){{
+            put("id", id);
+            put("from_date", fromDate);
+            put("to_date", toDate);
+            put("description", description);
+            put("present", present);
+            put("employee_id", employeeId);
+        }};
     }
 
     @Override
     public Map<String, Object> toJson(Routes routes) {
-        return null;
+        return toRefJson(routes);
     }
 }

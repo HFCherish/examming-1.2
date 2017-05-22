@@ -14,7 +14,7 @@ public interface AttendanceMapper {
 
     void save(@Param("attendance") Attendance attendance);
 
-    List<Attendance> findAll();
+    List<Attendance> findAll(@Param("employeeId") long employeeId);
 
     void update(@Param("id") long attendanceId, @Param("attendance") Attendance attendance);
 
