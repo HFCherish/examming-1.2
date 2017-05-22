@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.util;
 
+import com.thoughtworks.ketsu.domain.attendances.Attendance;
 import com.thoughtworks.ketsu.domain.employees.Employee;
 import com.thoughtworks.ketsu.domain.employees.Gender;
 
@@ -25,5 +26,21 @@ public class JsonToObjectHelper {
                 Long.valueOf(employeeInfo.get("department_id").toString()),
                 Long.valueOf(employeeInfo.get("role_id").toString()),
                 Gender.valueOf(employeeInfo.get("gender").toString()));
+    }
+
+    public static Attendance safeBuildAttendance(Map<String, Object> attendanceInfo) {
+        validate(attendanceInfo, all(
+                fieldNotEmpty("employee_id"),
+                fieldNotEmpty("from_date"),
+                fieldNotEmpty("to_date"),
+                fieldNotEmpty("description"),
+                fieldNotEmpty("present")
+        ));
+
+        return new Attendance(Long.valueOf(attendanceInfo.get("employee_id").toString()),
+                attendanceInfo.get("from_date").toString(),
+                attendanceInfo.get("to_date").toString(),
+                attendanceInfo.get("description").toString(),
+                Boolean.valueOf(attendanceInfo.get("present").toString()));
     }
 }

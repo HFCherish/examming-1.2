@@ -18,4 +18,14 @@
         E.role_id as employeeRoleId,
         E.gender as employeeGender
     </sql>
+
+    <sql id="attendance">
+        A.id as attendanceId,
+        A.employee_id as employeeId,
+        A.from_date as attendanceFromDate,
+        A.to_date as attendanceToDate,
+        A.description as attendanceDescription,
+        A.present as attendancePresent
+    </sql>
+
 </mapper>

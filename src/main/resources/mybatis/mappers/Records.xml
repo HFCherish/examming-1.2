@@ -25,4 +25,14 @@
         <result property="id" column="employeeId"/>
     </resultMap>
 
+
+    <resultMap id="attendance" type="com.thoughtworks.ketsu.domain.attendances.Attendance">
+        <result property="employeeId" column="employeeId"/>
+        <result property="fromDate" column="attendanceFromDate"/>
+        <result property="toDate" column="attendanceToDate"/>
+        <result property="description" column="attendanceDescription"/>
+        <result property="present" column="attendancePresent"/>
+        <result property="id" column="attendanceId"/>
+    </resultMap>
+
 </mapper>

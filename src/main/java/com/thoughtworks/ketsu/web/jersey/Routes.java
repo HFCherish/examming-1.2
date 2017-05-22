@@ -18,10 +18,10 @@ public class Routes {
     }
 
     public URI employeeUrl(long employeeId) {
-        return URI.create(String.format("%semployees/%s", baseUri, employeeId));
+        return URI.create(String.format("%semployees/%d", baseUri, employeeId));
     }
 
     public URI attendanceUrl(long attendanceId) {
-        return URI.create(String.format("%attendances/%s", baseUri, attendanceId));
+        return URI.create(String.format("%sattendances/%d", baseUri, attendanceId));
     }
 }

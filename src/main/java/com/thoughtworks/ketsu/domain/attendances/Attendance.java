@@ -17,6 +17,7 @@ public class Attendance implements Record {
     private String description;
     private boolean present;
 
+    private Attendance() {}
 
     public Attendance(long employeeId, String fromDate, String toDate, String description, boolean present) {
         this.id = IdGenerator.next();

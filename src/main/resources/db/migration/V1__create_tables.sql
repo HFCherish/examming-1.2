@@ -18,3 +18,12 @@ CREATE TABLE employees (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE attendances (
+  id VARCHAR(255) PRIMARY KEY,
+  employee_id VARCHAR(255),
+  from_date VARCHAR(255),
+  to_date VARCHAR(255),
+  description VARCHAR(255),
+  present bool,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

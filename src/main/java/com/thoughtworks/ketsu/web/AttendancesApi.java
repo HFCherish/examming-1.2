@@ -1,16 +1,18 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.attendances.Attendance;
+import com.thoughtworks.ketsu.domain.attendances.AttendanceRepo;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static com.thoughtworks.ketsu.util.JsonToObjectHelper.safeBuildAttendance;
 
 /**
  * Created by pzzheng on 5/22/17.
@@ -21,8 +23,11 @@ public class AttendancesApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Map<String, Object> attendanceInfo,
+                        @Context AttendanceRepo attendanceRepo,
                         @Context Routes routes) {
-        return Response.created(URI.create("")).build();
+
+        Attendance save = attendanceRepo.save(safeBuildAttendance(attendanceInfo));
+        return Response.created(routes.attendanceUrl(save.getId())).build();
     }
 
     @GET
