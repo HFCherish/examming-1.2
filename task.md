@@ -15,7 +15,7 @@
 	* return 200 when get one
 	* contains right details in response;  --15 : 9
 
-	* return 404 when not exists --1
+	* return 404 when not exists --1 : 1
 * update
  	* return 204 when update --15
 

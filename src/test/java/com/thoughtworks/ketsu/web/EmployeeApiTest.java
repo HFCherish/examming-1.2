@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
+import static com.thoughtworks.ketsu.support.TestHelper.employeeJsonForTest;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareEmployeeWithDefaultInfo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -59,5 +60,15 @@ public class EmployeeApiTest extends ApiSupport {
         Response response = get(getEmployeesUrl(1));
 
         assertThat(response.getStatus(), is(404));
+    }
+
+    @Test
+    public void should_204_when_update_one_employee() {
+        Map<String, Object> updateInfo = employeeJsonForTest();
+        updateInfo.replace("department_id", 2);
+
+//        Response response = put(getEmployeesUrl(employee.getId()), updateInfo);
+
+//        assertThat(response.getStatus(), is(204));
     }
 }

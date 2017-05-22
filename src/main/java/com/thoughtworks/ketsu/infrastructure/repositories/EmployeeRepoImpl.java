@@ -6,6 +6,7 @@ import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.EmployeeMapper;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -29,5 +30,10 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     @Override
     public List<Employee> findAll() {
         return employeeMapper.findAll();
+    }
+
+    @Override
+    public void update(long employeeId, Map<String, Object> employeeInfo) {
+
     }
 }
