@@ -15,10 +15,16 @@ import java.util.Map;
  */
 public class EmployeeApi {
 
+    private Employee employee;
+
+    public EmployeeApi(Employee employee) {
+        this.employee = employee;
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Employee getOne() {
-        return null;
+        return employee;
     }
 
     @PUT

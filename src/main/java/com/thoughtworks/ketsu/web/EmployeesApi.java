@@ -9,7 +9,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,8 +48,11 @@ public class EmployeesApi {
         return employeeRepo.findAll();
     }
 
-    @Path("{employeeId}")
-    public EmployeeApi getOne() {
-        return new EmployeeApi();
+    @Path("{id}")
+    public EmployeeApi getOne(@PathParam("id") long id,
+            @Context EmployeeRepo employeeRepo) {
+        return employeeRepo.findById(id)
+                .map(EmployeeApi:: new)
+                .orElseThrow(() -> new NotFoundException());
     }
 }

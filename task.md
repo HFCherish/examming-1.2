@@ -8,7 +8,7 @@
 	* return 400 when field empty; --15 :28
 * get
 	* return 200 when get all
-	* try to get from db and can get all details -- 20
+	* try to get from db and can get all details -- 20 : 10
 
 # /employees/eid
 * get
