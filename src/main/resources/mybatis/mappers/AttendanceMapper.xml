@@ -24,18 +24,18 @@
         </if>
     </select>
 
-    <!--<select id="update">-->
-        <!--UPDATE attendances SET-->
-        <!--name = #{attendance.name},-->
-        <!--department_id = #{attendance.departmentId},-->
-        <!--role_id = #{attendance.roleId},-->
-        <!--gender = #{attendance.gender}-->
-        <!--WHERE id = #{id}-->
-    <!--</select>-->
+    <select id="update">
+        UPDATE attendances SET
+        description = #{attendance.description},
+        from_date = #{attendance.fromDate},
+        to_date = #{attendance.toDate},
+        present = #{attendance.present}
+        WHERE id = #{id}
+    </select>
 
-    <!--<select id="delete">-->
-        <!--DELETE FROM attendances-->
-        <!--WHERE id = #{id}-->
-    <!--</select>-->
+    <select id="delete">
+        DELETE FROM attendances
+        WHERE id = #{id}
+    </select>
 
 </mapper>

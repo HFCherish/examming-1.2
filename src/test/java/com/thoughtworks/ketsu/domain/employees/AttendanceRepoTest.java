@@ -8,11 +8,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import java.util.Map;
 import java.util.Optional;
 
+import static com.thoughtworks.ketsu.support.TestHelper.attendanceJsonForTest;
 import static com.thoughtworks.ketsu.support.TestHelper.attendanceWithDefaultInfo;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareEmployeeWithDefaultInfo;
+import static com.thoughtworks.ketsu.util.JsonToObjectHelper.safeBuildAttendance;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -43,21 +47,23 @@ public class AttendanceRepoTest {
         assertThat(byId.get().getId(), is(save.getId()));
 
 
-////        update
-//        assertThat(save.getDepartmentId(), is(1l));
+//        update
+//        assertThat(save.getDescription(), is(not("change")));
+//        employeeRepo.findById(employee.getId());
 //        Map<String, Object> updateInfo = attendanceJsonForTest(employee.getId());
-//        updateInfo.replace("name", "");
+//        updateInfo.replace("description", "change");
+//        updateInfo.put("id", save.getId());
 //        attendanceRepo.update(save.getId(), safeBuildAttendance(updateInfo));
 //
 //        // prevent using cache when get
-//        attendanceRepo.save(attendanceWithDefaultInfo());
-//        assertThat(attendanceRepo.findById(save.getId()).get().getDepartmentId(), is(2l));
-//
-////        delete
-//        attendanceRepo.delete(save.getId());
-//        // prevent using cache when get
-//        attendanceRepo.save(attendanceWithDefaultInfo());
-//        assertThat(attendanceRepo.findById(save.getId()).isPresent(), is((false)));
+//        attendanceRepo.save(attendanceWithDefaultInfo(employee));
+//        assertThat(attendanceRepo.findById(save.getId()).get().getDescription(), is("change"));
+
+//        delete
+        attendanceRepo.delete(save.getId());
+        // prevent using cache when get
+        attendanceRepo.save(attendanceWithDefaultInfo(employee));
+        assertThat(attendanceRepo.findById(save.getId()).isPresent(), is((false)));
     }
 
 }

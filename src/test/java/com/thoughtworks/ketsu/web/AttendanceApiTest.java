@@ -14,8 +14,7 @@ import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
-import static com.thoughtworks.ketsu.support.TestHelper.prepareAttendanceWithDefaultInfo;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareEmployeeWithDefaultInfo;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -70,21 +69,22 @@ public class AttendanceApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(404));
     }
 
-//    @Test
-//    public void should_204_when_update_one_attendance() {
-//        Map<String, Object> updateInfo = attendanceJsonForTest();
-//        updateInfo.replace("department_id", 2);
-//
-//        Response response = put(getAttendancesUrl(attendance.getId()), updateInfo);
-//
-//        assertThat(response.getStatus(), is(204));
-//    }
+    @Test
+    public void should_204_when_update_one_attendance() {
+        Map<String, Object> updateInfo = attendanceJsonForTest(employee.getId());
+        updateInfo.replace("description", "change");
+        updateInfo.put("id",attendance.getId());
 
-//    @Test
-//    public void should_204_when_delete_one_attendance() {
-//
-//        Response response = delete(getAttendancesUrl(attendance.getId()));
-//
-//        assertThat(response.getStatus(), is(204));
-//    }
+        Response response = put(getAttendancesUrl(attendance.getId()), updateInfo);
+
+        assertThat(response.getStatus(), is(204));
+    }
+
+    @Test
+    public void should_204_when_delete_one_attendance() {
+
+        Response response = delete(getAttendancesUrl(attendance.getId()));
+
+        assertThat(response.getStatus(), is(204));
+    }
 }
