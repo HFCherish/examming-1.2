@@ -29,7 +29,7 @@ public class JsonToObjectHelper {
         return new Employee(employeeInfo.get("name").toString(),
                 Long.valueOf(employeeInfo.get("department_id").toString()),
                 Long.valueOf(employeeInfo.get("role_id").toString()),
-                Gender.valueOf(employeeInfo.get("gender").toString()));
+                Gender.valueOf(employeeInfo.get("gender").toString().toUpperCase()));
     }
 
     @Inject

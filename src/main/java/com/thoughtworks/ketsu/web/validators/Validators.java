@@ -24,7 +24,7 @@ public class Validators {
     }
 
     public static Validator fieldIsEnum(Class enumClass, String field) {
-        return info -> EnumUtils.isValidEnum(enumClass, info.getOrDefault(field, "").toString()) ?
+        return info -> EnumUtils.isValidEnum(enumClass, info.getOrDefault(field, "").toString().toUpperCase()) ?
                 Optional.empty() :
                 Optional.of(fieldErrorMessage(field, field + " is not valid. Valid values are: " + EnumUtils.getEnumList(enumClass).toString()).toString());
     }
