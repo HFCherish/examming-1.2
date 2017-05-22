@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thoughtworks.ketsu.infrastructure.mybatis.mappers.EmployeeMapper">
+    <insert id="save">
+        INSERT INTO employees (id, name, department_id, role_id, gender)
+        VALUES (#{employee.id}, #{employee.name}, #{employee.departmentId}, #{employee.roleId},  #{employee.gender})
+    </insert>
+
+    <select id="findById" resultMap="records.employee">
+        SELECT
+          <include refid="columns.employee"/>
+        FROM employees E
+        WHERE E.id = #{id}
+    </select>
+</mapper>

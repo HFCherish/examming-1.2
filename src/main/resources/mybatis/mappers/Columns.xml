@@ -10,4 +10,12 @@
         U.password as userPassword,
         U.role as userRole
     </sql>
+
+    <sql id="employee">
+        E.id as employeeId,
+        E.name as employeeName,
+        E.department_id as employeeDepartmentId,
+        E.role_id as employeeRoleId,
+        E.gender as employeeGender
+    </sql>
 </mapper>

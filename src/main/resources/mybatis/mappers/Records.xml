@@ -16,4 +16,13 @@
         <result property="password" column="userPassword"/>
         <association property="userId" resultMap="userId"/>
     </resultMap>
+
+    <resultMap id="employee" type="com.thoughtworks.ketsu.domain.employees.Employee">
+        <result property="name" column="employeeName"/>
+        <result property="departmentId" column="employeeDepartmentId"/>
+        <result property="roleId" column="employeeRoleId"/>
+        <result property="gender" column="employeeGender"/>
+        <result property="id" column="employeeId"/>
+    </resultMap>
+
 </mapper>

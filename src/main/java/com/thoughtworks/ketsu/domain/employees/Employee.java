@@ -18,7 +18,7 @@ public class Employee implements Record {
 
     private Employee() {}
 
-    public Employee(long departmentId, long roleId, Gender gender, String name) {
+    public Employee(String name, long departmentId, long roleId, Gender gender) {
         this.id = IdGenerator.next();
         this.departmentId = departmentId;
         this.roleId = roleId;
