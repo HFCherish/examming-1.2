@@ -16,4 +16,12 @@ public class Routes {
     public URI userUrl(User user) {
         return URI.create(String.format("%susers/%s", baseUri, user.getUserId().id()));
     }
+
+    public URI employeeUrl(long employeeId) {
+        return URI.create(String.format("%semployees/%s", baseUri, employeeId));
+    }
+
+    public URI attendanceUrl(long attendanceId) {
+        return URI.create(String.format("%attendances/%s", baseUri, attendanceId));
+    }
 }
