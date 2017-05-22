@@ -8,6 +8,7 @@ import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.AttendanceRepoImpl;
 import com.thoughtworks.ketsu.infrastructure.repositories.EmployeeRepoImpl;
 import com.thoughtworks.ketsu.infrastructure.repositories.MyBatisUserRepository;
+import com.thoughtworks.ketsu.util.JsonToObjectHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.*;
 import org.apache.ibatis.type.TypeHandler;
@@ -58,6 +59,7 @@ public class Models extends AbstractModule {
         bind(UserRepository.class).to(MyBatisUserRepository.class);
         bind(EmployeeRepo.class).to(EmployeeRepoImpl.class);
         bind(AttendanceRepo.class).to(AttendanceRepoImpl.class);
+        requestStaticInjection(JsonToObjectHelper.class);
     }
 
     private void bindPersistence() {

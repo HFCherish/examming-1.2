@@ -8,13 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
-import java.util.Map;
 import java.util.Optional;
 
-import static com.thoughtworks.ketsu.support.TestHelper.attendanceJsonForTest;
 import static com.thoughtworks.ketsu.support.TestHelper.attendanceWithDefaultInfo;
 import static com.thoughtworks.ketsu.support.TestHelper.prepareEmployeeWithDefaultInfo;
-import static com.thoughtworks.ketsu.util.JsonToObjectHelper.safeBuildAttendance;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -39,7 +36,7 @@ public class AttendanceRepoTest {
     @Test
     public void should_crud_success() {
 //        create and get
-        Attendance save = attendanceRepo.save(attendanceWithDefaultInfo(employee.getId()));
+        Attendance save = attendanceRepo.save(attendanceWithDefaultInfo(employee));
         Optional<Attendance> byId = attendanceRepo.findById(save.getId());
 
         assertThat(byId.isPresent(), is(true));

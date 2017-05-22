@@ -74,7 +74,7 @@ public class AttendancesApiTest extends ApiSupport {
 
     @Test
     public void should_200_when_get_all_attendances() {
-        Attendance attendance = prepareAttendanceWithDefaultInfo(attendanceRepo, employee.getId());
+        Attendance attendance = prepareAttendanceWithDefaultInfo(attendanceRepo, employee);
 
         Response response = get(getAttendancesUrl());
 

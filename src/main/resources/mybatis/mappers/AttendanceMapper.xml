@@ -3,13 +3,15 @@
 <mapper namespace="com.thoughtworks.ketsu.infrastructure.mybatis.mappers.AttendanceMapper">
     <insert id="save">
         INSERT INTO attendances (id, employee_id, from_date, to_date, description, present)
-        VALUES (#{attendance.id}, #{attendance.employeeId}, #{attendance.fromDate}, #{attendance.toDate},  #{attendance.description}, #{attendance.present})
+        VALUES (#{attendance.id}, #{attendance.employee.id}, #{attendance.fromDate}, #{attendance.toDate},  #{attendance.description}, #{attendance.present})
     </insert>
 
     <select id="findById" resultMap="records.attendance">
         SELECT
-        <include refid="columns.attendance"/>
+        <include refid="columns.attendance"/>,
+        <include refid="columns.employee"/>
         FROM attendances A
+        LEFT JOIN employees E ON E.id = A.employee_id
         WHERE A.id = #{id}
     </select>
 

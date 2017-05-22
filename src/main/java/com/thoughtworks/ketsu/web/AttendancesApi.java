@@ -36,8 +36,11 @@ public class AttendancesApi {
     }
 
 
-    @Path("{attendanceId}")
-    public AttendanceApi getOne() {
-        return new AttendanceApi();
+    @Path("{id}")
+    public AttendanceApi getOne(@Context AttendanceRepo attendanceRepo,
+                                @PathParam("id") long id) {
+        return attendanceRepo.findById(id)
+                .map(AttendanceApi::new)
+                .orElseThrow(() -> new NotFoundException());
     }
 }

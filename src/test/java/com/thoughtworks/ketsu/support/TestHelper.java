@@ -39,11 +39,11 @@ public class TestHelper {
         }};
     }
 
-    public static Attendance attendanceWithDefaultInfo(long employeeId) {
-        return new Attendance(employeeId, new DateTime().toString(), new DateTime().toString(), "...", false);
+    public static Attendance attendanceWithDefaultInfo(Employee employee) {
+        return new Attendance(employee, new DateTime().toString(), new DateTime().toString(), "...", false);
     }
 
-    public static Attendance prepareAttendanceWithDefaultInfo(AttendanceRepo attendanceRepo, long employeeId) {
-        return attendanceRepo.save(attendanceWithDefaultInfo(employeeId));
+    public static Attendance prepareAttendanceWithDefaultInfo(AttendanceRepo attendanceRepo, Employee employee) {
+        return attendanceRepo.save(attendanceWithDefaultInfo(employee));
     }
 }

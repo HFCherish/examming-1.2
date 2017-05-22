@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.domain.attendances;
 
+import com.thoughtworks.ketsu.domain.employees.Employee;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.util.IdGenerator;
 import com.thoughtworks.ketsu.web.jersey.Routes;
@@ -11,7 +12,7 @@ import java.util.Map;
  * Created by pzzheng on 5/22/17.
  */
 public class Attendance implements Record {
-    private long employeeId;
+    private Employee employee;
     private long id;
     private String fromDate;
     private String toDate;
@@ -20,9 +21,9 @@ public class Attendance implements Record {
 
     private Attendance() {}
 
-    public Attendance(long employeeId, String fromDate, String toDate, String description, boolean present) {
+    public Attendance(Employee employee, String fromDate, String toDate, String description, boolean present) {
         this.id = IdGenerator.next();
-        this.employeeId = employeeId;
+        this.employee = employee;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.description = description;
@@ -31,7 +32,7 @@ public class Attendance implements Record {
 
 
     public long getEmployeeId() {
-        return employeeId;
+        return employee.getId();
     }
 
     public long getId() {
@@ -62,12 +63,14 @@ public class Attendance implements Record {
             put("to_date", toDate);
             put("description", description);
             put("present", present);
-            put("employee_id", employeeId);
+            put("employee_id", employee.getId());
         }};
     }
 
     @Override
     public Map<String, Object> toJson(Routes routes) {
-        return toRefJson(routes);
+        Map<String, Object> res = toRefJson(routes);
+        res.put("name", employee.getName());
+        return res;
     }
 }

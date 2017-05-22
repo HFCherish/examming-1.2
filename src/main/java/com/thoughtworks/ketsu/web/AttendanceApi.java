@@ -15,10 +15,16 @@ import java.util.Map;
  */
 public class AttendanceApi {
 
+    private Attendance attendance;
+
+    public AttendanceApi(Attendance attendance) {
+        this.attendance = attendance;
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Attendance getOne() {
-        return null;
+        return attendance;
     }
 
     @PUT
