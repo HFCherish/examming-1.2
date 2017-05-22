@@ -60,6 +60,15 @@ public class AttendancesApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(400));
     }
+
+    @Test
+    public void should_400_when_create_attendance_if_employeeid_invalid() {
+        long invalid_employeeId = 1l;
+
+        Response response = post(getAttendancesUrl(), attendanceJsonForTest(invalid_employeeId));
+
+        assertThat(response.getStatus(), is(400));
+    }
 //
 //    @Test
 //    public void should_200_when_get_all_attendances() {
