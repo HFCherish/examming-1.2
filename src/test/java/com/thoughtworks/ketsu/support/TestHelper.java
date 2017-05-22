@@ -23,7 +23,6 @@ public class TestHelper {
     }
 
     public static Employee prepareEmployeeWithDefaultInfo(EmployeeRepo employeeRepo) {
-//        return employeeRepo.save(employeeWithDefaultInfo());
-        return null;
+        return employeeRepo.save(employeeWithDefaultInfo());
     }
 }

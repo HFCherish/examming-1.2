@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.employees.EmployeeRepo;
 import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.EmployeeMapper;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -23,5 +24,10 @@ public class EmployeeRepoImpl implements EmployeeRepo {
     @Override
     public Optional<Employee> findById(long id) {
         return Optional.ofNullable(employeeMapper.findById(id));
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeMapper.findAll();
     }
 }

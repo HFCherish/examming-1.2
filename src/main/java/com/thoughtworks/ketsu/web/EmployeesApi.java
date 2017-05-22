@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.thoughtworks.ketsu.domain.attendances.Attendance;
 import com.thoughtworks.ketsu.domain.employees.Employee;
 import com.thoughtworks.ketsu.domain.employees.EmployeeRepo;
 import com.thoughtworks.ketsu.domain.employees.Gender;
@@ -46,8 +45,8 @@ public class EmployeesApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Attendance> getAll() {
-        return new ArrayList<>();
+    public List<Employee> getAll(@Context EmployeeRepo employeeRepo) {
+        return employeeRepo.findAll();
     }
 
     @Path("{employeeId}")
